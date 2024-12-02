@@ -4,7 +4,7 @@ import java.util.Map;
 public class SymbolTable {
     private HashMap<String, Integer> table;
         public SymbolTable() {
-            for(int i = 0; i<15; i++){
+            for(int i = 0; i<=15; i++){
                 table.put("R" + i, i);
             }
             table.put("SCREEN", 16384);
