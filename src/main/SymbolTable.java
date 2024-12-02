@@ -5,6 +5,7 @@ import java.util.HashMap;
 public class SymbolTable {
     private HashMap<String, Integer> table;
         public SymbolTable() {
+            table = new HashMap<>();
             for(int i = 0; i<=15; i++){
                 table.put("R" + i, i);
             }

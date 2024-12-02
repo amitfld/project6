@@ -7,7 +7,7 @@ import java.util.Scanner;
 
 public class Parser {
     // Constructor: Initializes the parser with the source file.
-    public static String currInstuc;
+    public  static String currInstuc;
     private static Scanner forTranslate;
     private enum instruction_Type{
         A_Instruction,
@@ -66,6 +66,10 @@ public class Parser {
         if (Objects.equals(instructionType(), instruction_Type.C_Instruction.name())) { // Placeholder
             destination = currInstuc.split("=")[0];
         }
+        if (destination.isEmpty())
+        {
+            return null;
+        }
         return destination;
     }
 
@@ -73,7 +77,12 @@ public class Parser {
     public String comp() {
         String comp = "";
         if (Objects.equals(instructionType(), instruction_Type.C_Instruction.name())) {
-            comp = currInstuc.split("=")[1].split(";")[0];
+            if (currInstuc.contains(";")) {
+                comp = currInstuc.split("=")[1].split(";")[0];
+            }
+            else {
+                comp = currInstuc.split("=")[1];
+            }
         }
         return comp; // Placeholder
     }
