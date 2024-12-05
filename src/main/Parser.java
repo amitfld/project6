@@ -7,7 +7,8 @@ import java.util.Scanner;
 
 public class Parser {
     // Constructor: Initializes the parser with the source file.
-    public  static String currInstuc;
+    public int counter = 0;
+    public String currInstuc;
     private static Scanner forTranslate;
     private enum instruction_Type{
         A_Instruction,
@@ -30,6 +31,7 @@ public class Parser {
     public void advance() throws IOException {
         // Logic to move to the next instruction
         while (hasMoreLines()){
+            counter ++;
             currInstuc = forTranslate.nextLine();
             currInstuc = currInstuc.trim();
             if (!currInstuc.startsWith("//") && !currInstuc.isEmpty()){
