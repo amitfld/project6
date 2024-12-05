@@ -34,7 +34,7 @@ public class Parser {
             counter ++;
             currInstuc = forTranslate.nextLine();
             currInstuc = currInstuc.trim();
-            if (!currInstuc.startsWith("//") && !currInstuc.isEmpty()){
+            if (!currInstuc.startsWith("//") && !currInstuc.startsWith("(") && !currInstuc.isEmpty()){
                 break;
             }
         }
@@ -80,7 +80,11 @@ public class Parser {
         String comp = "";
         if (Objects.equals(instructionType(), instruction_Type.C_Instruction.name())) {
             if (currInstuc.contains(";")) {
-                comp = currInstuc.split("=")[1].split(";")[0];
+                if (currInstuc.contains("=")){
+                    comp = currInstuc.split("=")[1].split(";")[0];
+                } else {
+                    comp = currInstuc.split(";")[0];
+                }
             }
             else {
                 comp = currInstuc.split("=")[1];
@@ -93,7 +97,9 @@ public class Parser {
     public String jump() {
         String jump = "";
         if (Objects.equals(instructionType(), instruction_Type.C_Instruction.name())) {
-            jump = currInstuc.split(";")[1];
+            if (currInstuc.contains(";")){
+                jump = currInstuc.split(";")[1];
+            }
         }
         if (jump.isEmpty())
         {

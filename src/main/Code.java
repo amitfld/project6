@@ -11,7 +11,8 @@ public class Code {
             case "AM" -> "101";
             case "AD" -> "110";
             case "ADM" -> "111";
-            default -> "000";
+            case null -> "000";
+            default -> "000"; // Case null
         };
     }
 
@@ -24,12 +25,14 @@ public class Code {
             case "JNE" -> "101";
             case "JLE" -> "110";
             case "JMP" -> "111";
-            default -> "000";
+            case null -> "000";
+            default -> "000"; // Case null
         };
     }
 
     public String comp(String c){
         return switch (c) {
+            case "0" -> "0101010";
             case "1" -> "0111111";
             case "-1" -> "0111010";
             case "D" -> "0001100";
@@ -57,7 +60,7 @@ public class Code {
             case "M-D" -> "1000111";
             case "D&M" -> "1000000";
             case "D|M" -> "1010101";
-            default -> "0101010";
+            default -> "0000000"; // case A instruction
         };
     }
 }
