@@ -3,6 +3,7 @@ package main;
 import java.util.HashMap;
 
 public class SymbolTable {
+    public int nextAvailableAddress = 16;
     private HashMap<String, Integer> table;
         public SymbolTable() {
             table = new HashMap<>();
@@ -19,6 +20,9 @@ public class SymbolTable {
         }
         public void addEntry(String symbol, int address) {
             table.put(symbol, address);
+            if (address == nextAvailableAddress){
+                nextAvailableAddress ++;
+            }
         }
         public Boolean contains(String symbol) {
             return table.containsKey(symbol);

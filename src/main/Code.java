@@ -6,7 +6,7 @@ public class Code {
         return switch (d) {
             case "M" -> "001";
             case "D" -> "010";
-            case "DM" -> "011";
+            case "DM", "MD" -> "011";
             case "A" -> "100";
             case "AM" -> "101";
             case "AD" -> "110";
